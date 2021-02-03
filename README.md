@@ -18,6 +18,12 @@ Store all of your_secrets in a mysecrets.py file.  This would be SSID/Password i
 
 I setup HTTP get request and response to trigger events and retrieve information. Using simple urequests(url) I am able to monitor with Node-Red and if the correct value is sent I can turn on or off our compressor.  I can also retrieve specific data points as well by editing the responce depending on the information sent to Node-Red and return data specifics such as running state, is On or Off.
 
+When it first starts it trys to connect to one of several AP we have at our shop.  This is done by using the mysecrets file to store a tuple of the SSIDs and PASSWORDs that can be iterated through as each connection times out.  About 5 tries each before moving on.  If it fails to connect to an AP I notify of problem and enter deepsleep.  
+
+If connection is successful it will try to connect to the server using a GET request URL that is also sending information in the URL.  The Server responds with a JSON object of the data.  This data is then displayed to the OLED.
+
+Using the PRG button on the ESP32 board, if pressed, I call a function that will check the state of the air compressor from the Server Data response.  Then, if the air compressor is off, I send a GET request url to turn on the compressor, and if the air compressor is on the same is done to turn off the compressor.  An effective Remote Toggle switch for the air compressor.
+
 ## Purpose
 
 This was a simple project to start using and learn HTML requests and how they can be implemented to interface with APIs.
