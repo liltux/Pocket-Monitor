@@ -26,7 +26,7 @@ def get_AirComp_data(url):
         res = urequests.get(url)
     # Store the Json data as a Python Dict
         data = ujson.loads(res.text)
-    except OSError as e:
+    except:
         oled.clear()
         oled.text('{0}'.format(e), 5, 10)
         oled.text('Server Connect', 0, 20)
