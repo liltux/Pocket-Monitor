@@ -1,0 +1,6 @@
+# GET requests for turning on or off the aircompressor
+{ip_address_of_nodered_server}/api/AirCompressorOnOff?air=ON
+{ip_address_of_nodered_server}/api/AirCompressorOnOff?air=OFF
+
+# GET request for getting aircompressor data
+{ip_address_of_nodered_server}/api/AirCompressorData?air=pres&stat=cur&cond=cur&sched=cur
